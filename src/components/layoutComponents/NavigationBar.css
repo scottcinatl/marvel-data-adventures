@@ -1,0 +1,15 @@
+h1 {
+  color: #ffffff;
+}
+
+.navigation-bar {
+  background-color: #e23636;
+  height: 60px;
+  padding: 10px 0px;
+}
+
+.navigation-logo {
+  width: 150px;
+  height: 60px;
+  margin: 0 auto;
+}
