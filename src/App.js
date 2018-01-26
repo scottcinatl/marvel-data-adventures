@@ -18,11 +18,11 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      searchHeroQuery: 'V',
+      searchHeroQuery: 'I',
       heroResultsList: [],
       searchComicQuery: '2008',
       comicResultsList: [],
-      hideSearchHeroesForm: true,
+      hideSearchHeroesForm: false,
       hideSearchComicsForm: true,
     }
 
@@ -100,11 +100,25 @@ class App extends Component {
   }
 
   toggleSearchHeroes() {
-    this.setState({ hideSearchHeroesForm: !this.state.hideSearchHeroesForm })
+    const comicFormState = this.state.hideSearchComicsForm
+    const heroFormState = this.state.hideSearchHeroesForm
+    if (comicFormState === false) {
+      this.setState({
+        hideSearchComicsForm: true,
+        hideSearchHeroesForm: false,
+      })
+    }
   }
 
   toggleSearchComics() {
-    this.setState({ hideSearchComicsForm: !this.state.hideSearchComicsForm })
+    const comicFormState = this.state.hideSearchComicsForm
+    const heroFormState = this.state.hideSearchHeroesForm
+    if (heroFormState === false) {
+      this.setState({
+        hideSearchHeroesForm: true,
+        hideSearchComicsForm: false,
+      })
+    }
   }
 
   componentDidMount() {
@@ -120,6 +134,7 @@ class App extends Component {
         <SearchGuide />
 
         <img src={heroesSearchButton} onClick={this.toggleSearchHeroes.bind(this)} className="search-images" />
+        <img src={comicsSearchButton} onClick={this.toggleSearchComics.bind(this)} className="search-images" />
         {!this.state.hideSearchHeroesForm && (
           <div>
             <SearchHeroes
@@ -130,7 +145,7 @@ class App extends Component {
             <SearchHeroesResults heroResultsList={this.state.heroResultsList} />
           </div>
         )}
-        <img src={comicsSearchButton} onClick={this.toggleSearchComics.bind(this)} className="search-images" />
+
         {!this.state.hideSearchComicsForm && (
           <div>
             <SearchComics
