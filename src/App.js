@@ -7,6 +7,7 @@ import heroesSearchButton from './images/heroes-search-button.png'
 import NavigationBar from './components/layoutComponents/NavigationBar'
 import BannerImage from './components/layoutComponents/BannerImage'
 import SearchGuide from './components/layoutComponents/SearchGuide'
+import Footer from './components/layoutComponents/Footer'
 
 import SearchHeroes from './components/searchComponents/searchHeroes/SearchHeroes'
 import SearchHeroesResults from './components/searchComponents/searchHeroes/SearchHeroesResults'
@@ -180,6 +181,7 @@ class App extends Component {
             />
           </div>
         )}
+        <Footer />
       </div>
     )
   }

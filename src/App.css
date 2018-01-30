@@ -22,6 +22,10 @@ ul {
   list-style-type: none;
 }
 
+body {
+  height: 100vh;
+}
+
 /*-------------------------
     APP COMPONENT STYLES 
  ------------------------*/
@@ -30,10 +34,6 @@ ul {
   cursor: pointer;
   width: 30%;
   margin-bottom: 30px;
-}
-
-.search-images::focus {
-  box-shadow: inset 0px 0px 4px red;
 }
 
 @media only screen and (max-width: 800px) {

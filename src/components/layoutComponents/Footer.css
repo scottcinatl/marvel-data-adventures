@@ -1,0 +1,8 @@
+.footer {
+  background-color: #e23636;
+  font-family: 'Bangers', cursive;
+  color: #ffffff;
+  text-align: center;
+  flex-shrink: 0;
+  padding: 25px 0;
+}
