@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import SearchComicsResultItem from './SearchComicsResultItem'
 
 import deadpoolImage from '../images/deadpool-waiting.png'
+import thanosImage from '../images/thanos-failed.png'
 
 import './SearchComicsStyles.css'
 
@@ -22,6 +23,18 @@ class SearchComicsResults extends Component {
           </div>
         </div>
       )
+
+    const comicList = this.props.comicResultsList
+    if (comicList.length === 0) {
+      return (
+        <div className="loading-container">
+          <div className="loading-wrapper">
+            <div className="loading-text">{this.props.searchComicQuery} IS AN INVALID ENTRY, TRY A NEW SEARCH!</div>
+            <img className="loading-thanos" alt="thanos-failed" src={thanosImage} />
+          </div>
+        </div>
+      )
+    }
 
     return (
       <div>

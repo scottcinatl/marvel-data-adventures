@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import './SearchHeroesStyles.css'
 
 import SearchHeroesResultItem from './SearchHeroesResultItem'
+
 import deadpoolImage from '../images/deadpool-waiting.png'
+import thanosImage from '../images/thanos-failed.png'
 
 class SearchHeroesResults extends Component {
   render() {
@@ -20,6 +22,18 @@ class SearchHeroesResults extends Component {
           </div>
         </div>
       )
+
+    const heroList = this.props.heroResultsList
+    if (heroList.length === 0) {
+      return (
+        <div className="loading-container">
+          <div className="loading-wrapper">
+            <div className="loading-text">{this.props.searchHeroQuery} IS AN INVALID ENTRY, TRY A NEW SEARCH!</div>
+            <img className="loading-thanos" alt="thanos-failed" src={thanosImage} />
+          </div>
+        </div>
+      )
+    }
 
     return (
       <div>

@@ -18,9 +18,9 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      searchHeroQuery: 'I',
+      searchHeroQuery: 'C',
       heroResultsList: [],
-      searchComicQuery: '2008',
+      searchComicQuery: '2013',
       comicResultsList: [],
       hideSearchHeroesForm: true,
       hideSearchComicsForm: false,
@@ -35,7 +35,9 @@ class App extends Component {
   }
 
   handleHeroClick() {
-    this.setState({ loading: true })
+    this.setState({
+      loading: true,
+    })
     fetch(
       `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${
         this.state.searchHeroQuery

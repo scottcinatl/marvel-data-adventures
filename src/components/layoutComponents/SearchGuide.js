@@ -15,7 +15,7 @@ class SearchGuide extends Component {
               <p className="text top-left">Search Marvel's Database...</p>
               <p className="text bottom-right">...For Heroes or Comic Books!</p>
             </div>
-            <div className="panel thron">
+            <div className="panel thanos">
               <p className="text top-left">Make Sure To Follow Directions...</p>
               <p className="text bottom-right">...Or Your Search Results Will End in Tragedy!</p>
             </div>
