@@ -39,24 +39,8 @@
 
 .card__text {
   flex: 1 1 auto;
-}
-
-a:link {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-a:visited {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-a:active {
-  text-decoration: underline;
+  font-family: 'Gudea', sans-serif;
+  font-size: 1rem;
 }
 
 /*-------------------------

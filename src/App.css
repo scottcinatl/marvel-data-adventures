@@ -26,6 +26,23 @@ body {
   height: 100vh;
 }
 
+a:link {
+  color: #ffffff;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
 /*-------------------------
     APP COMPONENT STYLES 
  ------------------------*/

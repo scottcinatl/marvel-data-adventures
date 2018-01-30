@@ -4,7 +4,7 @@ import './SearchHeroesStyles.css'
 class SearchHeroes extends Component {
   render() {
     return (
-      <div className="search-form">
+      <div className="search-form" id="search-form">
         <div className="search-form-container">
           <input
             className="search-input"

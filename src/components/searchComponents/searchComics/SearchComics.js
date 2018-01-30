@@ -3,9 +3,8 @@ import './SearchComicsStyles.css'
 
 class SearchComics extends Component {
   render() {
-    console.log(this.props.searchComicQuery)
     return (
-      <div className="search-form">
+      <div className="search-form" id="search-form">
         <div className="search-form-container">
           <input
             className="search-input"
