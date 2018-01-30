@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
 import './NavigationBar.css'
-import marvelLogo from './marvel-data-logo.svg'
+import marvelAdventuresLogo from './images/marvel-adventures-logo.png'
 
 class NavigationBar extends Component {
   render() {
     return (
       <div className="navigation-bar">
-        <img className="navigation-logo" alt="Marvel-Data-Logo" src={marvelLogo} />
+        <img className="navigation-logo" alt="Marvel-Data-Logo" src={marvelAdventuresLogo} />
       </div>
     )
   }

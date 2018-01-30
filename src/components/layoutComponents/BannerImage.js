@@ -5,8 +5,8 @@ import './BannerImage.css'
 class BannerImage extends Component {
   render() {
     return (
-      <div class="banner-wrapper">
-        <div class="hero">
+      <div className="banner-wrapper">
+        <div className="hero">
           <h5>Explore The Marvel Universe!</h5>
         </div>
       </div>

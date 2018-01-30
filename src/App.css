@@ -12,7 +12,8 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+a {
   font-family: 'Bangers', cursive;
   letter-spacing: 1px;
 }
@@ -26,8 +27,16 @@ ul {
 .search-images {
   cursor: pointer;
   width: 30%;
+  margin-bottom: 30px;
 }
 
 .search-images::focus {
   box-shadow: inset 0px 0px 4px red;
+}
+
+@media only screen and (max-width: 800px) {
+  .search-images {
+    cursor: pointer;
+    width: 45%;
+  }
 }

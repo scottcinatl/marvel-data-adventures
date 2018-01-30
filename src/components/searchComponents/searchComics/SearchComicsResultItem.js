@@ -17,6 +17,9 @@ class SearchComicsResultItem extends Component {
               <h2 className="card__title">Title: {this.props.comic.title}</h2>
               <h3 className="card__text">Series: {this.props.comic.series.name}</h3>
               <p className="card__text">Issue Number: {this.props.comic.issueNumber}</p>
+              <a className="card__text" href={this.props.comic.urls[0].url} target="_blank">
+                Click To Learn More About: {this.props.comic.title}
+              </a>
             </div>
           </div>
         </li>

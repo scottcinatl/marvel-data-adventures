@@ -3,7 +3,6 @@ import './SearchHeroesStyles.css'
 
 class SearchHeroes extends Component {
   render() {
-    console.log(this.props.searchHeroQuery)
     return (
       <div className="search-form">
         <div className="search-form-container">

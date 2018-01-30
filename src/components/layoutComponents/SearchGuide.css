@@ -104,13 +104,199 @@
  ------------------------*/
 
 .panel:nth-child(4n + 1) {
-  background-image: url('./marvel-star-lord.png');
+  background-image: url('./images/marvel-star-lord.png');
 }
 
 .panel:nth-child(4n + 2) {
-  background-image: url('./marvel-thanos.png');
+  background-image: url('./images/marvel-thanos.png');
 }
 
 .panel:nth-child(4n + 3) {
-  background-image: url('./marvel-banner.jpg');
+  background-image: url('./images/marvel-banner.jpg');
+}
+
+/*----------------------------
+   SEARCH GUIDE INSTRUCTIONS 
+ ---------------------------*/
+
+.search-instructions-container {
+  margin-top: 75px;
+}
+
+.search-instructions {
+  width: 70%;
+  margin: 0 auto;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
+}
+
+.avengers-icon {
+  width: 100%;
+}
+
+.search-left {
+  flex: 1;
+}
+
+.search-right {
+  flex: 3;
+  text-align: left;
+}
+
+.search-instructions-title {
+  color: #e23636;
+  font-size: 1.75em;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.search-instructions-content {
+  font-size: 1.25em;
+  margin-top: -20px;
+}
+
+.search-instructions-content span {
+  color: #e23636;
+  font-size: 1.3em;
+}
+
+/*-------------------------
+       MEDIA QUERIES 
+ ------------------------*/
+
+@media only screen and (max-width: 1520px) {
+  .avengers-icon {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .avengers-icon {
+    margin-top: 60px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .avengers-icon {
+    margin-top: 60px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .search-left {
+    flex: 1;
+  }
+
+  .search-right {
+    flex: 2;
+  }
+
+  .avengers-icon {
+    width: 100%;
+    margin-top: 60px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .search-left {
+    flex: 1;
+  }
+
+  .search-right {
+    flex: 2;
+  }
+
+  .avengers-icon {
+    width: 90%;
+    margin-top: 80px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .search-left {
+    flex: 1;
+  }
+
+  .search-right {
+    flex: 1;
+  }
+
+  .avengers-icon {
+    width: 90%;
+    margin-top: 80px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .search-instructions {
+    display: flex;
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .avengers-icon {
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (max-width: 821px) {
+  .panel:nth-child(4n + 1) {
+    background-image: url('./images/marvel-star-lord.png');
+    background-repeat: no-repeat;
+    background-size: 718px;
+  }
+
+  .panel:nth-child(4n + 2) {
+    background-image: url('./images/marvel-thanos.png');
+    background-repeat: no-repeat;
+    background-size: 718px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .search-right {
+    font-size: 1.25em;
+  }
+
+  .search-instructions-content span {
+    font-size: 1em;
+  }
+
+  .avengers-icon {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 755px) {
+  .panel:nth-child(4n + 2) {
+    background-image: url('./images/marvel-thanos.png');
+    background-repeat: no-repeat;
+    background-size: 660px;
+  }
+}
+
+@media only screen and (max-width: 605px) {
+  .comic-strip-container h1 {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .panel:nth-child(4n + 2) {
+    background-image: url('./images/marvel-thanos.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+
+  .comic-strip-container h1 {
+    font-size: 2.3rem;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .comic-strip-container h1 {
+    font-size: 2rem;
+  }
 }

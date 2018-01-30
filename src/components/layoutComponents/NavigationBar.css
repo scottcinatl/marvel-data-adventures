@@ -9,7 +9,24 @@ h1 {
 }
 
 .navigation-logo {
-  width: 150px;
   height: 60px;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 415px) {
+  .navigation-logo {
+    width: 380px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .navigation-logo {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .navigation-logo {
+    width: 250px;
+  }
 }

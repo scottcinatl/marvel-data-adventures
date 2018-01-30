@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import './App.css'
 
-import comicsSearchButton from './comics-search-button.png'
-import heroesSearchButton from './heroes-search-button.png'
+import comicsSearchButton from './images/comics-search-button.png'
+import heroesSearchButton from './images/heroes-search-button.png'
 
 import NavigationBar from './components/layoutComponents/NavigationBar'
 import BannerImage from './components/layoutComponents/BannerImage'
 import SearchGuide from './components/layoutComponents/SearchGuide'
 
-import SearchHeroes from './components/searchHeroes/SearchHeroes'
-import SearchHeroesResults from './components/searchHeroes/SearchHeroesResults'
+import SearchHeroes from './components/searchComponents/searchHeroes/SearchHeroes'
+import SearchHeroesResults from './components/searchComponents/searchHeroes/SearchHeroesResults'
 
-import SearchComics from './components/searchComics/SearchComics'
-import SearchComicsResults from './components/searchComics/SearchComicsResults'
+import SearchComics from './components/searchComponents/searchComics/SearchComics'
+import SearchComicsResults from './components/searchComponents/searchComics/SearchComicsResults'
 
 class App extends Component {
   constructor() {
@@ -22,8 +22,9 @@ class App extends Component {
       heroResultsList: [],
       searchComicQuery: '2008',
       comicResultsList: [],
-      hideSearchHeroesForm: false,
-      hideSearchComicsForm: true,
+      hideSearchHeroesForm: true,
+      hideSearchComicsForm: false,
+      loading: true,
     }
 
     this.handleHeroChange = this.handleHeroChange.bind(this)
@@ -34,6 +35,7 @@ class App extends Component {
   }
 
   handleHeroClick() {
+    this.setState({ loading: true })
     fetch(
       `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${
         this.state.searchHeroQuery
@@ -52,6 +54,7 @@ class App extends Component {
           const heroList = data.data.results
           this.setState({
             heroResultsList: heroList,
+            loading: false,
           })
         },
         () => {
@@ -63,6 +66,7 @@ class App extends Component {
   }
 
   handleComicClick() {
+    this.setState({ loading: true })
     fetch(
       `https://gateway.marvel.com:443/v1/public/comics?startYear=${
         this.state.searchComicQuery
@@ -72,15 +76,16 @@ class App extends Component {
         if (!response.ok) {
           throw Error('Network request failed')
         }
-
         return response
       })
+
       .then(data => data.json())
       .then(
         data => {
           const comicList = data.data.results
           this.setState({
             comicResultsList: comicList,
+            loading: false,
           })
         },
         () => {
@@ -101,7 +106,6 @@ class App extends Component {
 
   toggleSearchHeroes() {
     const comicFormState = this.state.hideSearchComicsForm
-    const heroFormState = this.state.hideSearchHeroesForm
     if (comicFormState === false) {
       this.setState({
         hideSearchComicsForm: true,
@@ -111,7 +115,6 @@ class App extends Component {
   }
 
   toggleSearchComics() {
-    const comicFormState = this.state.hideSearchComicsForm
     const heroFormState = this.state.hideSearchHeroesForm
     if (heroFormState === false) {
       this.setState({
@@ -133,8 +136,19 @@ class App extends Component {
         <BannerImage />
         <SearchGuide />
 
-        <img src={heroesSearchButton} onClick={this.toggleSearchHeroes.bind(this)} className="search-images" />
-        <img src={comicsSearchButton} onClick={this.toggleSearchComics.bind(this)} className="search-images" />
+        <img
+          alt="hero-search-button"
+          src={heroesSearchButton}
+          onClick={this.toggleSearchHeroes.bind(this)}
+          className="search-images"
+        />
+        <img
+          alt="comic-search-button"
+          src={comicsSearchButton}
+          onClick={this.toggleSearchComics.bind(this)}
+          className="search-images"
+        />
+
         {!this.state.hideSearchHeroesForm && (
           <div>
             <SearchHeroes
@@ -142,7 +156,11 @@ class App extends Component {
               handleHeroChange={this.handleHeroChange}
               handleHeroClick={this.handleHeroClick}
             />
-            <SearchHeroesResults heroResultsList={this.state.heroResultsList} />
+            <SearchHeroesResults
+              heroResultsList={this.state.heroResultsList}
+              searchHeroQuery={this.state.searchHeroQuery}
+              loading={this.state.loading}
+            />
           </div>
         )}
 
@@ -153,7 +171,11 @@ class App extends Component {
               handleComicChange={this.handleComicChange}
               handleComicClick={this.handleComicClick}
             />
-            <SearchComicsResults comicResultsList={this.state.comicResultsList} />
+            <SearchComicsResults
+              comicResultsList={this.state.comicResultsList}
+              searchComicQuery={this.state.searchComicQuery}
+              loading={this.state.loading}
+            />
           </div>
         )}
       </div>
