@@ -23,8 +23,8 @@ class App extends Component {
       heroResultsList: [],
       searchComicQuery: '2013',
       comicResultsList: [],
-      hideSearchHeroesForm: true,
-      hideSearchComicsForm: false,
+      hideSearchHeroesForm: false,
+      hideSearchComicsForm: true,
       loading: true,
     }
 
