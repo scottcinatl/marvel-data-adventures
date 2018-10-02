@@ -1,25 +1,38 @@
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import React, { Component } from 'react'
 import './App.css'
-
-import comicsSearchButton from './images/comics-search-button.png'
-import heroesSearchButton from './images/heroes-search-button.png'
-
-import NavigationBar from './components/layoutComponents/NavigationBar'
 import BannerImage from './components/layoutComponents/BannerImage'
-import SearchGuide from './components/layoutComponents/SearchGuide'
 import Footer from './components/layoutComponents/Footer'
+import NavigationBar from './components/layoutComponents/NavigationBar'
+import SearchComics from './components/searchComponents/Comics/SearchComics'
+import SearchComicsResults from './components/searchComponents/Comics/SearchComicsResults'
+import SearchHeroes from './components/searchComponents/Heroes/SearchHeroes'
+import SearchHeroesResults from './components/searchComponents/Heroes/SearchHeroesResults'
 
-import SearchHeroes from './components/searchComponents/searchHeroes/SearchHeroes'
-import SearchHeroesResults from './components/searchComponents/searchHeroes/SearchHeroesResults'
-
-import SearchComics from './components/searchComponents/searchComics/SearchComics'
-import SearchComicsResults from './components/searchComponents/searchComics/SearchComicsResults'
+/**
+ * Custom settings for the Material UI theme.
+ * https://material-ui.com/customization/themes/
+ */
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#f44336',
+      dark: '#f6685e',
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      main: '#ffffff',
+      dark: '#00b1ca',
+      contrastText: '#f44336',
+    },
+  },
+})
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      searchHeroQuery: 'C',
+      searchHeroQuery: 'A',
       heroResultsList: [],
       searchComicQuery: '2013',
       comicResultsList: [],
@@ -27,15 +40,12 @@ class App extends Component {
       hideSearchComicsForm: true,
       loading: true,
     }
-
-    this.handleHeroChange = this.handleHeroChange.bind(this)
-    this.handleHeroClick = this.handleHeroClick.bind(this)
-
-    this.handleComicChange = this.handleComicChange.bind(this)
-    this.handleComicClick = this.handleComicClick.bind(this)
   }
 
-  handleHeroClick() {
+  /**
+   * Fetches data requested by the user for heroes from the Marvel API.
+   */
+  handleHeroSearch = () => {
     this.setState({
       loading: true,
     })
@@ -68,7 +78,10 @@ class App extends Component {
       )
   }
 
-  handleComicClick() {
+  /**
+   * Fetches data requested by the user for comics from the Marvel API.
+   */
+  handleComicSearch = () => {
     this.setState({ loading: true })
     fetch(
       `https://gateway.marvel.com:443/v1/public/comics?startYear=${
@@ -99,15 +112,24 @@ class App extends Component {
       )
   }
 
-  handleHeroChange(event) {
+  /**
+   * Handles the changes in the `HeroSearch` component form.
+   */
+  handleHeroChange = event => {
     this.setState({ searchHeroQuery: event.target.value })
   }
 
-  handleComicChange(event) {
+  /**
+   * Handles the changes in the `ComicSearch` component form.
+   */
+  handleComicChange = event => {
     this.setState({ searchComicQuery: event.target.value })
   }
 
-  toggleSearchHeroes() {
+  /**
+   * Toggles state to show the `HeroSearch` component and results and hide the `ComicSearch` component.
+   */
+  showHeroesSearch = () => {
     const comicFormState = this.state.hideSearchComicsForm
     if (comicFormState === false) {
       this.setState({
@@ -117,7 +139,10 @@ class App extends Component {
     }
   }
 
-  toggleSearchComics() {
+  /**
+   * Toggles state to show the `ComicSearch` component and results and hide the `HeroSearch` component.
+   */
+  showComicsSearch = () => {
     const heroFormState = this.state.hideSearchHeroesForm
     if (heroFormState === false) {
       this.setState({
@@ -128,60 +153,53 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.handleHeroClick()
-    this.handleComicClick()
+    this.handleHeroSearch()
+    this.handleComicSearch()
   }
 
   render() {
     return (
       <div className="App">
-        <NavigationBar />
-        <BannerImage />
-        <SearchGuide />
+        <MuiThemeProvider theme={theme}>
+          <NavigationBar />
+          <BannerImage
+            showComics={this.state.hideSearchHeroesForm}
+            searchComics={this.showComicsSearch}
+            searchHeroes={this.showHeroesSearch}
+          />
 
-        <img
-          alt="hero-search-button"
-          src={heroesSearchButton}
-          onClick={this.toggleSearchHeroes.bind(this)}
-          className="search-images"
-        />
-        <img
-          alt="comic-search-button"
-          src={comicsSearchButton}
-          onClick={this.toggleSearchComics.bind(this)}
-          className="search-images"
-        />
+          {!this.state.hideSearchHeroesForm && (
+            <div>
+              <SearchHeroes
+                searchHeroQuery={this.state.searchHeroQuery}
+                handleHeroChange={this.handleHeroChange}
+                handleHeroClick={this.handleHeroSearch}
+              />
+              <SearchHeroesResults
+                heroResultsList={this.state.heroResultsList}
+                searchHeroQuery={this.state.searchHeroQuery}
+                loading={this.state.loading}
+              />
+            </div>
+          )}
 
-        {!this.state.hideSearchHeroesForm && (
-          <div>
-            <SearchHeroes
-              searchHeroQuery={this.state.searchHeroQuery}
-              handleHeroChange={this.handleHeroChange}
-              handleHeroClick={this.handleHeroClick}
-            />
-            <SearchHeroesResults
-              heroResultsList={this.state.heroResultsList}
-              searchHeroQuery={this.state.searchHeroQuery}
-              loading={this.state.loading}
-            />
-          </div>
-        )}
+          {!this.state.hideSearchComicsForm && (
+            <div>
+              <SearchComics
+                searchComicQuery={this.state.searchComicQuery}
+                handleComicChange={this.handleComicChange}
+                handleComicClick={this.handleComicSearch}
+              />
+              <SearchComicsResults
+                comicResultsList={this.state.comicResultsList}
+                searchComicQuery={this.state.searchComicQuery}
+                loading={this.state.loading}
+              />
+            </div>
+          )}
 
-        {!this.state.hideSearchComicsForm && (
-          <div>
-            <SearchComics
-              searchComicQuery={this.state.searchComicQuery}
-              handleComicChange={this.handleComicChange}
-              handleComicClick={this.handleComicClick}
-            />
-            <SearchComicsResults
-              comicResultsList={this.state.comicResultsList}
-              searchComicQuery={this.state.searchComicQuery}
-              loading={this.state.loading}
-            />
-          </div>
-        )}
-        <Footer />
+          <Footer />
+        </MuiThemeProvider>
       </div>
     )
   }

@@ -1,23 +1,40 @@
-import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import React from 'react'
 
-import './Footer.css'
+const styles = theme => ({
+  footer: {
+    backgroundColor: theme.palette.primary.main,
+    padding: theme.spacing.unit * 6,
+    '& a': {
+      color: '#ffffff',
+      textDecoration: 'underline',
+    },
+  },
+})
 
-class Footer extends Component {
-  render() {
-    return (
-      <div className="footer">
-        <a href="#search-form">
-          <h3>Back To Search</h3>
-        </a>
-        <a href="https://github.com/scottcinatl/marvel-data-adventures" target="_blank" rel="noopener noreferrer">
-          <h2>View Source Code</h2>
-        </a>
-        <a href="https://developer.marvel.com/" target="_blank" rel="noopener noreferrer">
-          <h1>Data provided by Marvel. © 2014 Marvel</h1>
-        </a>
-      </div>
-    )
-  }
-}
+/**
+ * Renders the `Footer` component.
+ */
+const Footer = ({ classes }) => (
+  <footer className={classes.footer}>
+    <Typography variant="subheading" align="center" gutterBottom>
+      <a href="#search-form">Back To Search</a>
+    </Typography>
+    <Typography variant="subheading" align="center" gutterBottom>
+      <a href="https://github.com/scottcinatl/marvel-data-adventures" target="_blank" rel="noopener noreferrer">
+        View Source Code
+      </a>
+    </Typography>
+    <Typography variant="subheading" align="center" color="textSecondary" component="p">
+      <a href="https://developer.marvel.com/" target="_blank" rel="noopener noreferrer">
+        Data provided by Marvel. © 2014 Marvel
+      </a>
+    </Typography>
+  </footer>
+)
 
-export default Footer
+/**
+ * Renders the `Footer` component.
+ */
+export default withStyles(styles)(Footer)

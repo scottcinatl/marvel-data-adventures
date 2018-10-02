@@ -1,0 +1,95 @@
+/*-------------------------
+      LOADING STYLES 
+ ------------------------*/
+
+.loading-container {
+  margin-top: 50px;
+}
+
+.loading-wrapper {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.loading-text {
+  font-family: 'Bangers', cursive;
+  color: #e23636;
+  font-size: 2.5em;
+  text-align: left;
+  margin-left: 20px;
+}
+
+span[class^='dot-'] {
+  opacity: 0;
+}
+.dot-one {
+  animation: dot-one 2s infinite linear;
+}
+.dot-two {
+  animation: dot-two 2s infinite linear;
+}
+.dot-three {
+  animation: dot-three 2s infinite linear;
+}
+@keyframes dot-one {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot-two {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot-three {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .loading-thanos {
+    width: 400px;
+    height: 400px;
+  }
+
+  .loading-text {
+    font-size: 1.3em;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .loading-thanos {
+    width: 300px;
+    height: 300px;
+  }
+}
