@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/core/styles'
 import React from 'react'
-import deadpoolImage from '../assets/deadpool-waiting.png'
-import thanosImage from '../assets/thanos-failed.png'
+import deadpoolImage from '../../../assets/deadpool-waiting.png'
+import thanosImage from '../../../assets/thanos-failed.png'
 import ComicCard from './ComicCard'
 import './SearchComicsStyles.css'
 
